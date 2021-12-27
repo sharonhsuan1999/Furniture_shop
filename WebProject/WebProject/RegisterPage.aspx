@@ -31,6 +31,8 @@
         }
         .auto-style7 {
             font-size: large;
+            font-family: 微軟正黑體;
+            color: #000000;
         }
         .auto-style8 {
             font-size: x-large;
@@ -51,7 +53,7 @@
                     <table align="center" class="auto-style4">
                         <tr>
                             <td class="auto-style6">
-                                <asp:Label ID="Label1" runat="server" CssClass="auto-style7" Text="Label"></asp:Label>
+                                <asp:Label ID="Label1" runat="server" CssClass="auto-style7" Text="用戶名"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -69,7 +71,7 @@
                     <table align="center" class="auto-style4">
                         <tr>
                             <td class="auto-style6">
-                                <asp:Label ID="Label2" runat="server" CssClass="auto-style7" Text="Label"></asp:Label>
+                                <asp:Label ID="Label2" runat="server" CssClass="auto-style7" Text="用戶名"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -87,7 +89,7 @@
                     <table align="center" class="auto-style4">
                         <tr>
                             <td class="auto-style6">
-                                <asp:Label ID="Label3" runat="server" CssClass="auto-style7" Text="Label"></asp:Label>
+                                <asp:Label ID="Label3" runat="server" CssClass="auto-style7" Text="用戶名"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -105,7 +107,7 @@
                     <table align="center" class="auto-style4">
                         <tr>
                             <td class="auto-style6">
-                                <asp:Label ID="Label4" runat="server" CssClass="auto-style7" Text="Label"></asp:Label>
+                                <asp:Label ID="Label4" runat="server" CssClass="auto-style7" Text="用戶名"></asp:Label>
                             </td>
                         </tr>
                         <tr>
