@@ -120,10 +120,10 @@
                     <table align="center" class="auto-style17">
                         <tr>
                             <td>
-                                <asp:Button ID="BT_Register" runat="server" CssClass="auto-style8" Height="45px" Text="   註冊   " Width="175px" />
+                                <asp:Button ID="BT_Register" runat="server" CssClass="auto-style8" Height="45px" Text="   註冊   " Width="175px" BorderStyle="None" />
                             </td>
                             <td>
-                                <asp:Button ID="BT_Login" runat="server" CssClass="auto-style8" Height="45px" Text="   登入   " Width="175px" />
+                                <asp:Button ID="BT_Login" runat="server" CssClass="auto-style8" Height="45px" Text="   登入   " Width="175px" BorderStyle="None" />
                             </td>
                         </tr>
                     </table>
