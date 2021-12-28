@@ -57,6 +57,13 @@
         .auto-style17 {
             width: 22%;
         }
+        .auto-style18 {
+            height: 94px;
+        }
+        .auto-style19 {
+            text-align: center;
+            height: 94px;
+        }
     </style>
 </head>
 <body>
@@ -85,7 +92,7 @@
                         </tr>
                         <tr>
                             <td class="auto-style10">
-                                <asp:TextBox ID="TB_AccountInout" runat="server" CssClass="auto-style11" EnableTheming="True" Height="45px" ToolTip="請輸入帳號" Width="350px"></asp:TextBox>
+                                <asp:TextBox ID="TB_AccountInout" runat="server" CssClass="auto-style11" EnableTheming="True" Height="40px" ToolTip="請輸入帳號" Width="350px"></asp:TextBox>
                             </td>
                         </tr>
                     </table>
@@ -93,8 +100,8 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
-                <td class="auto-style5">&nbsp;<table align="center" class="auto-style17">
+                <td class="auto-style18"></td>
+                <td class="auto-style19">&nbsp;<table align="center" class="auto-style17">
                     <tr>
                         <td class="auto-style13">
                             <asp:Label ID="LB_Password" runat="server" CssClass="auto-style7" Text="密碼"></asp:Label>
@@ -102,12 +109,12 @@
                     </tr>
                     <tr>
                         <td aria-valuetext="帳號" class="auto-style10">
-                            <asp:TextBox ID="TB_PasswordInput" runat="server" CssClass="auto-style4" Height="45px" TextMode="Password" ToolTip="請輸入密碼" Width="350px"></asp:TextBox>
+                            <asp:TextBox ID="TB_PasswordInput" runat="server" CssClass="auto-style4" Height="40px" TextMode="Password" ToolTip="請輸入密碼" Width="350px"></asp:TextBox>
                         </td>
                     </tr>
                     </table>
                 </td>
-                <td>&nbsp;</td>
+                <td class="auto-style18"></td>
             </tr>
             <tr>
                 <td class="auto-style15"></td>
@@ -120,10 +127,10 @@
                     <table align="center" class="auto-style17">
                         <tr>
                             <td>
-                                <asp:Button ID="BT_Register" runat="server" CssClass="auto-style8" Height="45px" Text="   註冊   " Width="175px" BorderStyle="None" />
+                                <asp:Button ID="BT_Register" runat="server" CssClass="auto-style8" Height="40px" Text="   註冊   " Width="175px" BorderStyle="None" />
                             </td>
                             <td>
-                                <asp:Button ID="BT_Login" runat="server" CssClass="auto-style8" Height="45px" Text="   登入   " Width="175px" BorderStyle="None" />
+                                <asp:Button ID="BT_Login" runat="server" CssClass="auto-style8" Height="40px" Text="   登入   " Width="175px" BorderStyle="None" />
                             </td>
                         </tr>
                     </table>
@@ -136,6 +143,9 @@
                 <td>&nbsp;</td>
             </tr>
         </table>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+        <asp:GridView ID="GridView1" runat="server">
+        </asp:GridView>
     </form>
 </body>
 </html>

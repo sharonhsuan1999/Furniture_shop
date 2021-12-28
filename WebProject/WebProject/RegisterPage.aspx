@@ -37,6 +37,18 @@
         .auto-style8 {
             font-size: x-large;
         }
+        .auto-style9 {
+            height: 86px;
+        }
+        .auto-style10 {
+            text-align: center;
+        }
+        .auto-style11 {
+            font-size: large;
+            font-family: 微軟正黑體;
+            color: #FFFFFF;
+            background-color: #663300;
+        }
     </style>
 </head>
 <body>
@@ -53,12 +65,12 @@
                     <table align="center" class="auto-style4">
                         <tr>
                             <td class="auto-style6">
-                                <asp:Label ID="Label1" runat="server" CssClass="auto-style7" Text="用戶名"></asp:Label>
+                                <asp:Label ID="LB_UserName" runat="server" CssClass="auto-style7" Text="用戶名"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:TextBox ID="TextBox1" runat="server" CssClass="auto-style8" Height="45px" Width="380px"></asp:TextBox>
+                                <asp:TextBox ID="TB_UserNameInput" runat="server" CssClass="auto-style8" Height="40px" Width="380px"></asp:TextBox>
                             </td>
                         </tr>
                     </table>
@@ -71,17 +83,35 @@
                     <table align="center" class="auto-style4">
                         <tr>
                             <td class="auto-style6">
-                                <asp:Label ID="Label2" runat="server" CssClass="auto-style7" Text="用戶名"></asp:Label>
+                                <asp:Label ID="LB_Phone" runat="server" CssClass="auto-style7" Text="電話"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:TextBox ID="TextBox2" runat="server" CssClass="auto-style8" Height="45px" Width="380px"></asp:TextBox>
+                                <asp:TextBox ID="TB_PhoneInput" runat="server" CssClass="auto-style8" Height="40px" Width="380px" TextMode="Number"></asp:TextBox>
                             </td>
                         </tr>
                     </table>
                 </td>
                 <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style9"></td>
+                <td class="auto-style9">
+                    <table align="center" class="auto-style4">
+                        <tr>
+                            <td class="auto-style6">
+                                <asp:Label ID="LB_Email" runat="server" CssClass="auto-style7" Text="電子信箱"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TB_EmailInput" runat="server" CssClass="auto-style8" Height="40px" Width="380px" TextMode="Email"></asp:TextBox>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="auto-style9"></td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
@@ -89,30 +119,12 @@
                     <table align="center" class="auto-style4">
                         <tr>
                             <td class="auto-style6">
-                                <asp:Label ID="Label3" runat="server" CssClass="auto-style7" Text="用戶名"></asp:Label>
+                                <asp:Label ID="LB_Password" runat="server" CssClass="auto-style7" Text="密碼"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:TextBox ID="TextBox3" runat="server" CssClass="auto-style8" Height="45px" Width="380px"></asp:TextBox>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>
-                    <table align="center" class="auto-style4">
-                        <tr>
-                            <td class="auto-style6">
-                                <asp:Label ID="Label4" runat="server" CssClass="auto-style7" Text="用戶名"></asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:TextBox ID="TextBox4" runat="server" CssClass="auto-style8" Height="45px" Width="380px"></asp:TextBox>
+                                <asp:TextBox ID="TB_PasswordInput" runat="server" CssClass="auto-style8" Height="40px" Width="380px" TextMode="Password"></asp:TextBox>
                             </td>
                         </tr>
                     </table>
@@ -126,7 +138,9 @@
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style10">
+                                <asp:Button ID="BT_Register" runat="server" CssClass="auto-style11" Height="40px" Text="   註冊   " Width="175px" BorderStyle="None" />
+                            </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
