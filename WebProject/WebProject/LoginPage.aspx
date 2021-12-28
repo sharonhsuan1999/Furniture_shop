@@ -127,10 +127,10 @@
                     <table align="center" class="auto-style17">
                         <tr>
                             <td>
-                                <asp:Button ID="BT_Register" runat="server" CssClass="auto-style8" Height="40px" Text="   註冊   " Width="175px" BorderStyle="None" />
+                                <asp:Button ID="BT_Register" runat="server" CssClass="auto-style8" Height="40px" Text="   註冊   " Width="175px" BorderStyle="None" OnClick="BT_Register_Click" PostBackUrl="~/RegisterPage.aspx" />
                             </td>
                             <td>
-                                <asp:Button ID="BT_Login" runat="server" CssClass="auto-style8" Height="40px" Text="   登入   " Width="175px" BorderStyle="None" />
+                                <asp:Button ID="BT_Login" runat="server" CssClass="auto-style8" Height="40px" Text="   登入   " Width="175px" BorderStyle="None" OnClick="BT_Login_Click" />
                             </td>
                         </tr>
                     </table>
@@ -143,9 +143,18 @@
                 <td>&nbsp;</td>
             </tr>
         </table>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
-        <asp:GridView ID="GridView1" runat="server">
-        </asp:GridView>
+        <asp:SqlDataSource ID="UserSqlData" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT user_account, user_password FROM UserTable WHERE (user_account = @user_account) AND (user_password = @user_password)">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="TB_AccountInout" Name="user_account" PropertyName="Text" />
+                <asp:ControlParameter ControlID="TB_PasswordInput" Name="user_password" PropertyName="Text" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <asp:DetailsView ID="UserDetailsView" runat="server" AutoGenerateRows="False" DataSourceID="UserSqlData" Height="50px" Width="125px">
+            <Fields>
+                <asp:BoundField DataField="user_account" HeaderText="user_account" SortExpression="user_account" />
+                <asp:BoundField DataField="user_password" HeaderText="user_password" SortExpression="user_password" />
+            </Fields>
+        </asp:DetailsView>
     </form>
 </body>
 </html>

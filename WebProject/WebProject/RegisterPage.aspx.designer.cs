@@ -60,22 +60,22 @@ namespace WebProject
         protected global::System.Web.UI.WebControls.TextBox TB_PhoneInput;
 
         /// <summary>
-        /// LB_Email 控制項。
+        /// LB_Account 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LB_Email;
+        protected global::System.Web.UI.WebControls.Label LB_Account;
 
         /// <summary>
-        /// TB_EmailInput 控制項。
+        /// TB_AccountInput 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TB_EmailInput;
+        protected global::System.Web.UI.WebControls.TextBox TB_AccountInput;
 
         /// <summary>
         /// LB_Password 控制項。

@@ -101,12 +101,12 @@
                     <table align="center" class="auto-style4">
                         <tr>
                             <td class="auto-style6">
-                                <asp:Label ID="LB_Email" runat="server" CssClass="auto-style7" Text="電子信箱"></asp:Label>
+                                <asp:Label ID="LB_Account" runat="server" CssClass="auto-style7" Text="帳號"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:TextBox ID="TB_EmailInput" runat="server" CssClass="auto-style8" Height="40px" Width="380px" TextMode="Email"></asp:TextBox>
+                                <asp:TextBox ID="TB_AccountInput" runat="server" CssClass="auto-style8" Height="40px" Width="380px"></asp:TextBox>
                             </td>
                         </tr>
                     </table>
