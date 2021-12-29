@@ -13,5 +13,10 @@ namespace WebProject
         {
 
         }
+
+        protected void BT_Register_Click(object sender, EventArgs e)
+        {
+            RegisterSqlData.Insert();
+        }
     }
 }

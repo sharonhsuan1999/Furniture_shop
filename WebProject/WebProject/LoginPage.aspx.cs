@@ -25,11 +25,22 @@ namespace WebProject
 
             if (UserDetailsView.DataItemCount==1)
             {
-                Session["name"] = UserDetailsView.Rows[0].Cells[1].Text;
-                Session["money"] = UserDetailsView.Rows[1].Cells[1].Text;
-                Session["phone"] = UserDetailsView.Rows[2].Cells[1].Text;
+                Session["account"] = UserDetailsView.Rows[0].Cells[1].Text;
+                Session["password"] = UserDetailsView.Rows[1].Cells[1].Text;
+                Session["id"] = UserDetailsView.Rows[2].Cells[1].Text;
+                //Server.Transfer("~/RegisterPage.aspx", false);
+           
+                //LB_Password.Text = Session["password"].ToString();
             }
-            //BT_Login.PostBackUrl = 
+            else
+            {
+                Response.Write("<script> alert('帳號或密碼輸入錯誤!') </script>");
+            }
+        }
+
+        protected void BT_Login_Command(object sender, CommandEventArgs e)
+        {
+
         }
     }
 }

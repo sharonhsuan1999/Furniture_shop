@@ -49,6 +49,17 @@
             color: #FFFFFF;
             background-color: #663300;
         }
+        .auto-style12 {
+            height: 31px;
+        }
+        .auto-style13 {
+            text-align: center;
+            height: 31px;
+        }
+        .auto-style14 {
+            text-decoration: none;
+            color: #663300;
+        }
     </style>
 </head>
 <body>
@@ -132,21 +143,25 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style6"></td>
+                <td class="auto-style6"></td>
+                <td class="auto-style6"></td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
                 <td class="auto-style10">
-                                <asp:Button ID="BT_Register" runat="server" CssClass="auto-style11" Height="40px" Text="   註冊   " Width="175px" BorderStyle="None" />
+                                <asp:Button ID="BT_Register" runat="server" CssClass="auto-style11" Height="40px" Text="   註冊   " Width="175px" BorderStyle="None" OnClick="BT_Register_Click" />
                             </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style12"></td>
+                <td class="auto-style13">
+                    <asp:Label ID="LB_ToLogin" runat="server" Text="已經有帳號?"></asp:Label>
+&nbsp;
+                    <asp:LinkButton ID="LKB_ToLoginPage" runat="server" BorderStyle="None" CssClass="auto-style14" PostBackUrl="~/LoginPage.aspx">會員登入</asp:LinkButton>
+                </td>
+                <td class="auto-style12"></td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
@@ -154,6 +169,14 @@
                 <td>&nbsp;</td>
             </tr>
         </table>
+        <asp:SqlDataSource ID="RegisterSqlData" runat="server" InsertCommand="INSERT INTO UserTable(user_name, user_phone, user_account, user_password) VALUES (@user_name, @user_phone, @user_account, @user_password)">
+            <InsertParameters>
+                <asp:ControlParameter ControlID="TB_UserNameInput" Name="user_name" PropertyName="Text" />
+                <asp:ControlParameter ControlID="TB_PhoneInput" Name="user_phone" PropertyName="Text" />
+                <asp:ControlParameter ControlID="TB_AccountInput" Name="user_account" PropertyName="Text" />
+                <asp:ControlParameter ControlID="TB_PasswordInput" Name="user_password" PropertyName="Text" />
+            </InsertParameters>
+        </asp:SqlDataSource>
     </form>
 </body>
 </html>
