@@ -130,6 +130,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="背景圖.png" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="lastPage.aspx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="OrdererPage.aspx" />
     <Content Include="profile.png" />
@@ -195,6 +196,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="lastPage.aspx.cs">
+      <DependentUpon>lastPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="lastPage.aspx.designer.cs">
+      <DependentUpon>lastPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="LoginPage.aspx.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>

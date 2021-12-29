@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OrdererPage.aspx.cs" Inherits="WebProject.OrdererPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OrdererPage.aspx.cs" Inherits="web1.OrdererPage" %>
 
 <!DOCTYPE html>
 
