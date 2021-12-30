@@ -123,7 +123,7 @@
                         &nbsp;</td>
                     <td class="auto-style18">
                         <asp:Label ID="paymentLB" runat="server" CssClass="auto-style7" Text="付款方式"></asp:Label>
-                        <asp:DropDownList ID="paymentList" runat="server" CssClass="auto-style10">
+                        <asp:DropDownList ID="paymentList" runat="server" CssClass="auto-style10" AutoPostBack="True" OnSelectedIndexChanged="paymentList_SelectedIndexChanged">
                             <asp:ListItem>現金</asp:ListItem>
                             <asp:ListItem>電子支付</asp:ListItem>
                         </asp:DropDownList>
@@ -131,8 +131,8 @@
                     </span>
                     </td>
                     <td class="auto-style13" id="paymentID">
-                        <asp:Label ID="paymentIDLB" runat="server" CssClass="auto-style7" Text="付款ID"></asp:Label>
-                    &nbsp;<asp:TextBox ID="paymentIDTB" runat="server" CssClass="auto-style10"></asp:TextBox>
+                        <asp:Label ID="paymentIDLB" runat="server" CssClass="auto-style7" Text="付款ID" Visible="False"></asp:Label>
+                    &nbsp;<asp:TextBox ID="paymentIDTB" runat="server" CssClass="auto-style10" Visible="False"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -149,7 +149,7 @@
                         <asp:Label ID="getLB" runat="server" CssClass="auto-style7" Text="取貨方式"></asp:Label>
                         <span class="auto-style21">&nbsp;&nbsp;&nbsp;
                         </span>
-                        <asp:DropDownList ID="getList" runat="server" CssClass="auto-style10">
+                        <asp:DropDownList ID="getList" runat="server" CssClass="auto-style10" AutoPostBack="True" OnSelectedIndexChanged="getList_SelectedIndexChanged">
                             <asp:ListItem>宅配</asp:ListItem>
                             <asp:ListItem>店取</asp:ListItem>
                         </asp:DropDownList>
@@ -200,6 +200,13 @@
                 </tr>
             </table>
         </div>
+        <asp:SqlDataSource ID="InsertOrdererSql" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" InsertCommand="INSERT INTO orderTable(order_time, order_userPhone, order_address, order_creditCard) VALUES (GETDATE(), @order_userPhone, @order_address, @order_creditCard)">
+            <InsertParameters>
+                <asp:ControlParameter ControlID="phoneTB" Name="order_userPhone" PropertyName="Text" />
+                <asp:SessionParameter Name="order_address" SessionField="Address" />
+                <asp:ControlParameter ControlID="paymentIDTB" Name="order_creditCard" PropertyName="Text" />
+            </InsertParameters>
+        </asp:SqlDataSource>
     </form>
 </body>
 </html>
