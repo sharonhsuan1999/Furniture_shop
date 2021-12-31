@@ -103,6 +103,11 @@
         .auto-style26 {
             font-size: xx-large;
         }
+        .auto-style27 {
+            position: relative;
+            left: 0px;
+            top: 12px;
+        }
     </style>
 </head>
 <body style="background-size:cover; background-image: url('背景圖.png'); background-repeat: no-repeat; background-attachment: fixed; background-position: center center">
@@ -275,7 +280,7 @@
         </table>
         <p>
             &nbsp;</p>
-        <p>
+        <p class="auto-style27">
             <asp:Button ID="truncateTableBT" runat="server" OnClick="truncateTableBT_Click" Text="重建表單" />
         <asp:SqlDataSource ID="showProduct" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT product_Id, product_name, product_price, product_qt, product_class FROM productTable"></asp:SqlDataSource>
         </p>
