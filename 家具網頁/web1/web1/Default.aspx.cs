@@ -17,6 +17,8 @@ namespace web1
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            classGridView.DataBind();
+            orderProductGridView.DataBind();
             string str = "畢業出清全館免運 ! 新年1/1~1/7，滿2000送精美小禮品，優惠錯過就不再，要買要快唷~";
             string text = "<MARQUEE>" + str + "</MARQUEE>";
             Label1.Text = text;

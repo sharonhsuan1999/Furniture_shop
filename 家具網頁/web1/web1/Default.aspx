@@ -309,7 +309,7 @@
                 </Columns>
             </asp:GridView>
         </p>
-        <asp:SqlDataSource ID="orderProductDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" InsertCommand="INSERT INTO orderProductTable(product_id, order_id) VALUES (@product_id, @order_id)" SelectCommand="SELECT orderProductTable.orderProduct_id, orderProductTable.product_id, productTable.product_name FROM orderProductTable INNER JOIN productTable ON orderProductTable.product_id = productTable.product_Id">
+        <asp:SqlDataSource ID="orderProductDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" InsertCommand="INSERT INTO orderProductTable(product_id, order_id) VALUES (@product_id, @order_id)" SelectCommand="SELECT orderProductTable.orderProduct_id, orderProductTable.product_id, productTable.product_name FROM orderProductTable INNER JOIN productTable ON orderProductTable.product_id = productTable.product_Id AND orderProductTable.product_id = productTable.product_Id">
             <InsertParameters>
                 <asp:SessionParameter Name="product_id" SessionField="product_id" />
                 <asp:SessionParameter Name="order_id" SessionField="order_id" />
