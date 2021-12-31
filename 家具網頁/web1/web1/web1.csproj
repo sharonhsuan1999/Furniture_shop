@@ -132,6 +132,7 @@
     <Content Include="OrdererPage.aspx" />
     <Content Include="profile.png" />
     <Content Include="shopping.png" />
+    <Content Include="ShoppingCart.aspx" />
     <Content Include="背景圖.png" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Ketnipz es el primer invitado de Japan Weekend Madrid - Ramen Para Dos.jpg" />
@@ -211,6 +212,13 @@
       <DependentUpon>OrdererPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShoppingCart.aspx.cs">
+      <DependentUpon>ShoppingCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShoppingCart.aspx.designer.cs">
+      <DependentUpon>ShoppingCart.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

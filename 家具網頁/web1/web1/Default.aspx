@@ -16,6 +16,8 @@
             font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
             width: 1339px;
             margin-top: 0px;
+            margin-left:auto;
+            margin-right:auto;
         }
         .auto-style8 {
             width: 1627px;
@@ -108,6 +110,13 @@
             left: 0px;
             top: 12px;
         }
+        .auto-style28 {
+            width: 110px;
+            height: 20px;
+        }
+        .auto-style29 {
+            height: 20px;
+        }
     </style>
 </head>
 <body style="background-size:cover; background-image: url('背景圖.png'); background-repeat: no-repeat; background-attachment: fixed; background-position: center center">
@@ -116,7 +125,7 @@
             <table class="auto-style16">
                 <tr>
                     <td class="auto-style17">
-                        <span class="auto-style26">Welcome to Furniture Wonderland!<br />
+                        <span class="auto-style26"><strong>Welcome to Furniture Wonderland!</strong><br />
                         </span>
                         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                     </td>
@@ -124,7 +133,7 @@
                         <asp:ImageButton ID="profileIB" runat="server" OnClick="ImageButton1_Click" ImageUrl="~/profile.png" />
                     </td>
                     <td style="background-image: none; background-repeat: no-repeat; background-attachment: fixed; background-position: center center" class="auto-style18">
-                        <asp:ImageButton ID="shoppingCartIB" runat="server" ImageUrl="~/shopping.png" />
+                        <asp:ImageButton ID="shoppingCartIB" runat="server" ImageUrl="~/shopping.png" PostBackUrl="~/ShoppingCart.aspx" />
                     </td>
                 </tr>
             </table>
@@ -194,28 +203,28 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style20">&nbsp;</td>
-                <td>
+                <td class="auto-style28"></td>
+                <td class="auto-style29">
                     <strong>
                     <asp:Label ID="money1_LB" runat="server" Text="Label" CssClass="auto-style22" Visible="False"></asp:Label>
                     </strong>
                 </td>
-                <td>
+                <td class="auto-style29">
                     <strong>
                     <asp:Label ID="money2_LB" runat="server" Text="Label" CssClass="auto-style22" Visible="False"></asp:Label>
                     </strong>
                 </td>
-                <td>
+                <td class="auto-style29">
                     <strong>
                     <asp:Label ID="money3_LB" runat="server" Text="Label" CssClass="auto-style22" Visible="False"></asp:Label>
                     </strong>
                 </td>
-                <td>
+                <td class="auto-style29">
                     <strong>
                     <asp:Label ID="money4_LB" runat="server" Text="Label" CssClass="auto-style22" Visible="False"></asp:Label>
                     </strong>
                 </td>
-                <td>
+                <td class="auto-style29">
                     <strong>
                     <asp:Label ID="money5_LB" runat="server" Text="Label" CssClass="auto-style22" Visible="False"></asp:Label>
                     </strong>

@@ -7,6 +7,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <style type="text/css">
+        body{
+            background-size:cover; 
+            background-image: url('背景圖.png'); 
+            background-repeat: no-repeat; 
+            background-attachment: fixed; 
+            background-position: center center;
+
+            font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+            color:#666;
+        }
         .auto-style1 {
             width: 100%;
             height: 314px;
@@ -15,7 +25,7 @@
             height: 24px;
         }
         .auto-style3 {
-            font-size: xx-large;
+            font-size: 55px;
             font-family: 微軟正黑體;
         }
         .auto-style4 {
@@ -51,7 +61,9 @@
             <tr>
                 <td class="auto-style5">&nbsp;</td>
                 <td class="auto-style6">
+                    <strong>
                     <asp:Label ID="orderIDText0" runat="server" CssClass="auto-style3" Text="謝謝光臨"></asp:Label>
+                    </strong>
                 </td>
                 <td>&nbsp;</td>
             </tr>

@@ -7,6 +7,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <style type="text/css">
+        body{
+            background-size:cover; 
+            background-image: url('背景圖.png'); 
+            background-repeat: no-repeat; 
+            background-attachment: fixed; 
+            background-position: center center;
+
+            font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+            color:#666;
+        }
         .auto-style1 {
             width: 100%;
         }

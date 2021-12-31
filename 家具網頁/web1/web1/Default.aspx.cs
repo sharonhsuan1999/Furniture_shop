@@ -264,34 +264,37 @@ namespace web1
 
         protected void add1_Click1(object sender, EventArgs e)
         {
-            orderProductDataSource.Insert();
             Session["product_id"] = classGridView.Rows[0].Cells[4].Text;
+            orderProductDataSource.Insert();
 
         }
 
         protected void add2_Click(object sender, EventArgs e)
         {
-            orderProductDataSource.Insert();
+            
             Session["product_id"] = classGridView.Rows[1].Cells[4].Text;
-
+            orderProductDataSource.Insert();
         }
 
         protected void add3_Click1(object sender, EventArgs e)
         {
-            orderProductDataSource.Insert();
+            
             Session["product_id"] = classGridView.Rows[2].Cells[4].Text;
+            orderProductDataSource.Insert();
         }
 
         protected void add4_Click1(object sender, EventArgs e)
         {
-            orderProductDataSource.Insert();
+            
             Session["product_id"] = classGridView.Rows[3].Cells[4].Text;
+            orderProductDataSource.Insert();
         }
 
         protected void add5_Click1(object sender, EventArgs e)
         {
-            orderProductDataSource.Insert();
+            
             Session["product_id"] = classGridView.Rows[4].Cells[4].Text;
+            orderProductDataSource.Insert();
         }
 
         protected void truncateTableBT_Click(object sender, EventArgs e)
