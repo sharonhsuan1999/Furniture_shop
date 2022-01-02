@@ -77,10 +77,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="產品單價" SortExpression="product_price">
                         <EditItemTemplate>
-                            <asp:Label ID="Label7" runat="server" Text='<%# Eval("product_price", "{0:C}") %>'></asp:Label>
+                            <asp:Label ID="Label7" runat="server" Text='<%# Eval("product_price", "{0:G}") %>'></asp:Label>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="subtotalLB" runat="server" Text='<%# Bind("product_price", "{0:C}") %>'></asp:Label>
+                            <asp:Label ID="subtotalLB" runat="server" Text='<%# Bind("product_price", "{0:G}") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="數量" SortExpression="num">

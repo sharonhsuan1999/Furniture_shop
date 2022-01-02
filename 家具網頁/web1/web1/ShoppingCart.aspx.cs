@@ -25,25 +25,24 @@ namespace web1
         {
             string getTotal = " ";
             int total = 0;
-            char[] MyChar = { ',', '.'};
+            //char[] MyChar = { ',', '.'};
 
             for (int i = 0; i < CartView.Rows.Count; i++)
             {
                 
-                if (CartView.Rows[1].Cells[3].FindControl("itemNumLB") != null)
+                if (CartView.Rows[i].Cells[3].FindControl("itemNumLB") != null)
                 {
-                    getTotal = ((Label)CartView.Rows[1].Cells[2].FindControl("subtotalLB")).Text;
-                    getTotal= getTotal.Remove(0, 3);
-                    getTotal = getTotal.Replace(",","");
+                    getTotal = ((Label)CartView.Rows[i].Cells[2].FindControl("subtotalLB")).Text;
+                    //getTotal= getTotal.Remove(0, 3);
+                    //getTotal = getTotal.Replace(",","");
                     //getTotal = getTotal.Replace(".", "");
 
                     //total += ((Convert.ToInt32(((Label)CartView.Rows[i].Cells[3].FindControl("itemNumLB")).Text))*(Convert.ToInt32(((Label)CartView.Rows[i].Cells[2].FindControl("subtotalLB")).Text)));
-                    //total += Convert.ToInt32(((Label)CartView.Rows[i].Cells[2].FindControl("subtotalLB")).Text);
+                    //total += (Convert.ToInt32(getTotal))* (Convert.ToInt32(((Label)CartView.Rows[i].Cells[3].FindControl("itemNumLB")).Text));
                 }    
             }
 
-            CartTotalPrice.Text = "Total:" + total;
-
+            CartTotalPrice.Text = "Total:" + getTotal;
         }
 
     }
