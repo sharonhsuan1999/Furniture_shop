@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+
 
 namespace web1
 {
@@ -11,7 +13,15 @@ namespace web1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            SqlConnection orderConnect = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\clientData.mdf;Integrated Security=True");
+            orderConnect.Open();
+            SqlCommand orderCommand = new SqlCommand("select top 1 order_Id from [orderTable] order by order_Id Desc", orderConnect);
+            SqlDataReader orderRead;
+            orderRead = orderCommand.ExecuteReader();
+            if (orderRead.Read())
+            {
+                orderIDNum.Text = orderRead["order_Id"] + "號訂單";
+            }
         }
     }
 }
