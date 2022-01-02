@@ -197,7 +197,7 @@
 &nbsp;<asp:TextBox ID="addressTB" runat="server" CssClass="auto-style10" Width="244px"></asp:TextBox>
                     </td>
                     <td class="auto-style11">
-                        <asp:Button ID="checkoutBT" runat="server" Text="結帳" OnClick="checkoutBT_Click" CssClass="auto-style21" PostBackUrl="~/lastPage.aspx" />
+                        <asp:Button ID="checkoutBT" runat="server" Text="結帳" OnClick="checkoutBT_Click" CssClass="auto-style21" />
                     </td>
                 </tr>
                 <tr>

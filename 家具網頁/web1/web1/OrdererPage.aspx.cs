@@ -24,6 +24,7 @@ namespace web1
         {
             Session["Address"] = addressList.SelectedValue + addressTB.Text;
             InsertOrdererSql.Insert();
+            Server.Transfer("lastPage.aspx");
         }
 
         protected void paymentList_SelectedIndexChanged(object sender, EventArgs e)
