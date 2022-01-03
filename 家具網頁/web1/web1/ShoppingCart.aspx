@@ -48,6 +48,9 @@
         .cart{
             padding-top:10px;
         }
+        .auto-style1 {
+            font-size: large;
+        }
     </style>
 </head>
 <body>
@@ -158,6 +161,9 @@
             </table>
             
             
+            <asp:Label ID="qtLB" runat="server" CssClass="auto-style1" Text="庫存：" Visible="False"></asp:Label>
+            
+            
         </div>
         <asp:SqlDataSource ID="CartDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT productTable.product_name, orderProductTable.num, orderProductTable.size, orderProductTable.color, productTable.product_price, productTable.product_img, orderProductTable.orderProduct_id FROM orderProductTable INNER JOIN productTable ON orderProductTable.product_id = productTable.product_Id WHERE (orderProductTable.customer_id = @customer_id) ORDER BY productTable.product_class" DeleteCommand="DELETE FROM orderProductTable WHERE (orderProduct_id = @orderProduct_id)" UpdateCommand="UPDATE orderProductTable SET num = @num, size = @size, color = @color WHERE (orderProduct_id = @orderProduct_id)">
             <DeleteParameters>
@@ -173,6 +179,9 @@
                 <asp:ControlParameter ControlID="CartView" Name="orderProduct_id" PropertyName="SelectedDataKey" />
             </UpdateParameters>
         </asp:SqlDataSource>
+        <asp:SqlDataSource ID="QtDataSource" runat="server"></asp:SqlDataSource>
+        <asp:GridView ID="QtGridView" runat="server" Visible="False">
+        </asp:GridView>
     </form>
 </body>
 </html>
