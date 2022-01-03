@@ -78,7 +78,7 @@
             <tr>
                 <td class="auto-style5">&nbsp;</td>
                 <td class="auto-style6">
-                    <asp:LinkButton ID="ToIndexBt" runat="server" CssClass="auto-style8">回首頁</asp:LinkButton>
+                    <asp:LinkButton ID="ToIndexBt" runat="server" CssClass="auto-style8" OnClick="ToIndexBt_Click">回首頁</asp:LinkButton>
                 </td>
                 <td>&nbsp;</td>
             </tr>

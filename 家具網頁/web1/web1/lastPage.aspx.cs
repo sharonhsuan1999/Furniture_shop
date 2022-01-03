@@ -23,5 +23,10 @@ namespace web1
                 orderIDNum.Text = orderRead["order_Id"] + "號訂單";
             }
         }
+
+        protected void ToIndexBt_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("Default.aspx");
+        }
     }
 }
