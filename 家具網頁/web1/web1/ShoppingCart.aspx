@@ -52,6 +52,7 @@
         }
         .auto-style1 {
             font-size: large;
+            color: #800000;
         }
     </style>
 </head>
@@ -156,7 +157,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="PlaceOrder" runat="server" Text="Place Order" CssClass="sure" PostBackUrl="~/OrdererPage.aspx" />
+                        <asp:Button ID="PlaceOrder" runat="server" Text="Place Order" CssClass="sure" PostBackUrl="~/OrdererPage.aspx" OnClick="PlaceOrder_Click" />
                     </td>
                     
                 </tr>
@@ -171,7 +172,16 @@
             
             
             
-            <asp:Label ID="qtLB" runat="server" CssClass="auto-style1" Text="庫存：" Visible="False"></asp:Label>
+            <strong>
+            
+            
+            
+            
+            
+            <asp:Label ID="errorLB" runat="server" CssClass="auto-style1" Text="錯誤訊息" Visible="False"></asp:Label>
+            
+            
+            </strong>
             
             
         </div>
@@ -189,8 +199,60 @@
                 <asp:ControlParameter ControlID="CartView" Name="orderProduct_id" PropertyName="SelectedDataKey" />
             </UpdateParameters>
         </asp:SqlDataSource>
-        <asp:SqlDataSource ID="QtDataSource" runat="server"></asp:SqlDataSource>
-        <asp:GridView ID="QtGridView" runat="server" Visible="False">
+        <asp:SqlDataSource ID="QtDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT orderProductTable.product_id, SUM(orderProductTable.num) AS totalNum, productTable.product_qt, productTable.product_name FROM orderProductTable INNER JOIN productTable ON orderProductTable.product_id = productTable.product_Id WHERE (orderProductTable.order_id = @order_id) GROUP BY orderProductTable.product_id, productTable.product_qt, productTable.product_name" UpdateCommand="UPDATE productTable SET product_qt = @product_qt WHERE (product_Id = @product_Id)">
+            <SelectParameters>
+                <asp:SessionParameter Name="order_id" SessionField="order_id" />
+            </SelectParameters>
+            <UpdateParameters>
+                <asp:SessionParameter Name="product_qt" SessionField="updateQtNum" />
+                <asp:SessionParameter Name="product_Id" SessionField="updateQtId" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+        <asp:GridView ID="QtGridView" runat="server" Visible="False" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataSourceID="QtDataSource" ForeColor="Black" GridLines="Vertical">
+            <AlternatingRowStyle BackColor="White" />
+            <Columns>
+                <asp:TemplateField HeaderText="product_id" SortExpression="product_id">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("product_id") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="qtIdLB" runat="server" Text='<%# Bind("product_id") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="product_name" SortExpression="product_name">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("product_name") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="qtNameLB" runat="server" Text='<%# Bind("product_name") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="totalNum" SortExpression="totalNum">
+                    <EditItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("totalNum") %>'></asp:Label>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="totalNumLB" runat="server" Text='<%# Bind("totalNum") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="product_qt" SortExpression="product_qt">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("product_qt") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="checkQtLB" runat="server" Text='<%# Bind("product_qt") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+            <FooterStyle BackColor="#CCCC99" />
+            <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+            <RowStyle BackColor="#F7F7DE" />
+            <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#FBFBF2" />
+            <SortedAscendingHeaderStyle BackColor="#848384" />
+            <SortedDescendingCellStyle BackColor="#EAEAD3" />
+            <SortedDescendingHeaderStyle BackColor="#575357" />
         </asp:GridView>
     </form>
 </body>

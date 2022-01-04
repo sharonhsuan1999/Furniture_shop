@@ -51,9 +51,45 @@ namespace web1
 
         protected void CartView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            errorLB.Text = "";
+            errorLB.Visible = false;
             countTotal();
+            qtCheck();
+            QtGridView.DataBind();
         }
 
+        private void qtCheck()
+        {
+            int num;
+            int qt;
+            bool isError = false;
+
+            for (int i = 0; i < QtGridView.Rows.Count; i++)
+            {
+                if (QtGridView.Rows[i].Cells[1].FindControl("qtNameLB") != null &&
+                    QtGridView.Rows[i].Cells[2].FindControl("totalNumLB") != null &&
+                    QtGridView.Rows[i].Cells[3].FindControl("checkQtLB") != null)
+                {
+                    using (Label qtNameLB = (Label)QtGridView.Rows[i].Cells[1].FindControl("qtNameLB"),
+                        totalNumLB = (Label)QtGridView.Rows[i].Cells[2].FindControl("totalNumLB"),
+                        checkQtLB = (Label)QtGridView.Rows[i].Cells[3].FindControl("checkQtLB"))
+                    {
+                        num = Convert.ToInt32(totalNumLB.Text);
+                        qt = Convert.ToInt32(checkQtLB.Text);
+                        if (num > qt)
+                        {
+                            errorLB.Text += "<br>" + qtNameLB.Text + "庫存不足(剩下" + qt + "個)";
+                            isError = true;
+                        }
+                    }
+                }
+            }
+            if (isError)
+            {
+                PlaceOrder.Enabled = false;
+                errorLB.Visible = true;
+            }
+        }
         private void countTotal()
         {
             int total = 0;
@@ -85,7 +121,9 @@ namespace web1
                 {
                     if (tempNumLB.Text == "0")
                     {
-                        msg = "(錯誤的數量)";
+                        PlaceOrder.Enabled = false;
+                        errorLB.Visible = true;
+                        errorLB.Text = "(錯誤的數量)";
                         tempNumLB.ForeColor = System.Drawing.Color.Red;
                     }
                     else
@@ -98,6 +136,7 @@ namespace web1
 
         protected void CartView_RowDeleted(object sender, GridViewDeletedEventArgs e)
         {
+            
             if (CartView.Rows.Count == 1)
             {
                 //CartTotalPrice.Text = "購物車為空，歡迎前往選購！";
@@ -105,6 +144,8 @@ namespace web1
 
                 CartTotalPrice.Visible = false;
                 PlaceOrder.Visible = false;
+                errorLB.Visible = false;
+
                 Server.Transfer("Default.aspx");
             }
         }
@@ -116,6 +157,36 @@ namespace web1
                 if (!Char.IsDigit(ch))
                 {
                     ((TextBox)sender).Text = "0";
+                }
+            }
+        }
+
+        protected void PlaceOrder_Click(object sender, EventArgs e)
+        {
+            updateQt();
+        }
+
+        private void updateQt()
+        {
+            int num;
+            int qt;
+            for (int i = 0; i < QtGridView.Rows.Count; i++)
+            {
+                if (QtGridView.Rows[i].Cells[0].FindControl("qtIdLB") != null &&
+                    QtGridView.Rows[i].Cells[2].FindControl("totalNumLB") != null &&
+                    QtGridView.Rows[i].Cells[3].FindControl("checkQtLB") != null)
+                {
+                    using (Label qtIdLB = (Label)QtGridView.Rows[i].Cells[0].FindControl("qtIdLB"),
+                        totalNumLB = (Label)QtGridView.Rows[i].Cells[2].FindControl("totalNumLB"),
+                        checkQtLB = (Label)QtGridView.Rows[i].Cells[3].FindControl("checkQtLB"))
+                    {
+                        num = Convert.ToInt32(totalNumLB.Text);
+                        qt = Convert.ToInt32(checkQtLB.Text);
+
+                        Session["updateQtId"] = Convert.ToInt32(qtIdLB.Text);
+                        Session["updateQtNum"] = qt - num;
+                        QtDataSource.Update();
+                    }
                 }
             }
         }
