@@ -17,6 +17,8 @@ namespace WebProject
         protected void BT_Register_Click(object sender, EventArgs e)
         {
             RegisterSqlData.Insert();
+            Response.Write("<script> alert('註冊成功!請重新登入~') </script>");
+            Server.Transfer("~/LoginPage.aspx", false);
         }
     }
 }

@@ -34,9 +34,6 @@
             font-family: 微軟正黑體;
             color: #000000;
         }
-        .auto-style8 {
-            font-size: x-large;
-        }
         .auto-style9 {
             height: 86px;
         }
@@ -60,9 +57,15 @@
             text-decoration: none;
             color: #663300;
         }
+        .auto-style15 {
+            height: 22px;
+        }
+        .auto-style16 {
+            font-size: medium;
+        }
     </style>
 </head>
-<body>
+<body style="background-image: url('背景圖.png'); background-repeat: no-repeat; background-attachment: fixed; background-position: center center">
     <form id="form1" runat="server">
         <div class="auto-style1">
             <br />
@@ -81,7 +84,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:TextBox ID="TB_UserNameInput" runat="server" CssClass="auto-style8" Height="40px" Width="380px"></asp:TextBox>
+                                <asp:TextBox ID="TB_UserNameInput" runat="server" CssClass="auto-style16" Height="40px" Width="380px"></asp:TextBox>
                             </td>
                         </tr>
                     </table>
@@ -99,7 +102,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:TextBox ID="TB_PhoneInput" runat="server" CssClass="auto-style8" Height="40px" Width="380px" TextMode="Number"></asp:TextBox>
+                                <asp:TextBox ID="TB_PhoneInput" runat="server" CssClass="auto-style16" Height="40px" Width="380px" TextMode="Phone"></asp:TextBox>
                             </td>
                         </tr>
                     </table>
@@ -117,7 +120,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:TextBox ID="TB_AccountInput" runat="server" CssClass="auto-style8" Height="40px" Width="380px"></asp:TextBox>
+                                <asp:TextBox ID="TB_AccountInput" runat="server" CssClass="auto-style16" Height="40px" Width="380px"></asp:TextBox>
                             </td>
                         </tr>
                     </table>
@@ -135,7 +138,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:TextBox ID="TB_PasswordInput" runat="server" CssClass="auto-style8" Height="40px" Width="380px" TextMode="Password"></asp:TextBox>
+                                <asp:TextBox ID="TB_PasswordInput" runat="server" CssClass="auto-style16" Height="40px" Width="380px" TextMode="Password"></asp:TextBox>
                             </td>
                         </tr>
                     </table>
@@ -143,9 +146,9 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style6"></td>
-                <td class="auto-style6"></td>
-                <td class="auto-style6"></td>
+                <td class="auto-style15"></td>
+                <td class="auto-style15"></td>
+                <td class="auto-style15"></td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
@@ -169,7 +172,7 @@
                 <td>&nbsp;</td>
             </tr>
         </table>
-        <asp:SqlDataSource ID="RegisterSqlData" runat="server" InsertCommand="INSERT INTO UserTable(user_name, user_phone, user_account, user_password) VALUES (@user_name, @user_phone, @user_account, @user_password)">
+        <asp:SqlDataSource ID="RegisterSqlData" runat="server" InsertCommand="INSERT INTO UserTable(user_name, user_phone, user_account, user_password) VALUES (@user_name, @user_phone, @user_account, @user_password)" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT user_id, user_name, user_phone, user_account, user_password FROM UserTable">
             <InsertParameters>
                 <asp:ControlParameter ControlID="TB_UserNameInput" Name="user_name" PropertyName="Text" />
                 <asp:ControlParameter ControlID="TB_PhoneInput" Name="user_phone" PropertyName="Text" />
@@ -177,6 +180,8 @@
                 <asp:ControlParameter ControlID="TB_PasswordInput" Name="user_password" PropertyName="Text" />
             </InsertParameters>
         </asp:SqlDataSource>
+        <asp:GridView ID="GridView1" runat="server">
+        </asp:GridView>
     </form>
 </body>
 </html>

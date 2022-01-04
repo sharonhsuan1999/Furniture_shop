@@ -21,7 +21,7 @@
             height: 236px;
         }
         .auto-style4 {
-            font-size: x-large;
+            font-size: medium;
             margin-top: 0px;
         }
         .auto-style5 {
@@ -41,7 +41,7 @@
             text-align: left;
         }
         .auto-style11 {
-            font-size: x-large;
+            font-size: medium;
         }
         .auto-style13 {
             text-align: left;
@@ -66,7 +66,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background-image: url('背景圖.png'); background-repeat: no-repeat; background-attachment: fixed; background-position: center center">
     <form id="form1" runat="server">
         <div class="auto-style1">
             <br />
