@@ -68,7 +68,7 @@
             width: 1389px;
         }
         .auto-style17 {
-            width: 250px;
+            width: 351px;
             color: #666666;
             height: 51px;
         }
@@ -112,7 +112,7 @@
             height: 20px;
         }
         .auto-style30 {
-            width: 2381px;
+            width: 2098px;
             color: #666666;
             text-align: right;
             font-size: xx-large;
@@ -129,6 +129,10 @@
             font-size: xx-large;
             height: 51px;
         }
+        .auto-style33 {
+            font-size: medium;
+            color: #333333;
+        }
     </style>
 </head>
 <body style="background-size:cover; background-image: url('背景圖.png'); background-repeat: no-repeat; background-attachment: fixed; background-position: center center">
@@ -142,7 +146,7 @@
                     <td class="auto-style30">
                     </td>
                     <td class="auto-style17">
-                        <asp:Label ID="LB_HelloUser" runat="server"></asp:Label>
+                        <asp:Label ID="LB_HelloUser" runat="server" CssClass="auto-style33"></asp:Label>
                     </td>
                     <td style="background-image: none; background-repeat: no-repeat; background-attachment: fixed; background-position: center center" class="auto-style31">
                         <asp:ImageButton ID="profileIB" runat="server" OnClick="ImageButton1_Click" ImageUrl="~/profile.png" PostBackUrl="~/LoginPage.aspx" />
