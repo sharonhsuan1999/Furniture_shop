@@ -22,6 +22,19 @@ namespace web1
             string str = "畢業出清全館免運 ! 新年1/1~1/7，滿2000送精美小禮品，優惠錯過就不再，要買要快唷~";
             string text = "<MARQUEE>" + str + "</MARQUEE>";
             Label1.Text = text;
+
+            
+            if (Session["id"] != null)
+            {
+                Session["name"] = HelloUserDetailsView.Rows[1].Cells[1].Text;
+                Session["phone"] = HelloUserDetailsView.Rows[2].Cells[1].Text;
+
+                LB_HelloUser.Text = "Hello~ " + Session["name"].ToString();
+            }
+            else
+            {
+                LB_HelloUser.Text = "";
+            }
         }
 
 

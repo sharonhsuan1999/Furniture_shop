@@ -11,10 +11,10 @@
             text-align: center;
             font-size: x-large;
             position: relative;
-            left: 4px;
-            top: 34px;
+            left: -59px;
+            top: 31px;
             font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-            width: 1339px;
+            width: 1384px;
             margin-top: 0px;
             margin-left:auto;
             margin-right:auto;
@@ -24,18 +24,19 @@
             height: 489px;
         }
         .auto-style9 {
-            width: 83%;
+            width: 1367px;
             color: #666666;
             position: relative;
-            left: 10px;
+            left: 46px;
             top: 62px;
             margin-right: 0px;
         }
         .auto-style10 {
             top: 2px;
-            width: 474px;
+            width: 341px;
             table-layout: auto;
             left: 358px;
+            text-align: center;
         }
         .auto-style11 {
             text-decoration: none;
@@ -45,44 +46,40 @@
         .auto-style12 {
             left: 499px;
             top: 2px;
-            width: 548px;
+            width: 341px;
             table-layout: auto;
-        }
-        .auto-style13 {
-            left: 2px;
-            top: 2px;
-            width: 470px;
+            text-align: center;
         }
         .auto-style14 {
-            top: 2px;
-            width: 256px;
+            top: -60px;
+            width: 342px;
             table-layout: auto;
-            left: 1090px;
+            left: 1153px;
+            text-align: center;
         }
         .auto-style15 {
             left: 2px;
             top: 2px;
-            width: 165px;
+            width: 341px;
             table-layout: auto;
+            text-align: center;
         }
         .auto-style16 {
-            width: 105%;
+            width: 1389px;
         }
         .auto-style17 {
-            width: 1332px;
+            width: 250px;
             color: #666666;
-        }
-        .auto-style18 {
-            width: 57px;
+            height: 51px;
         }
         .auto-style19 {
-            width: 83%;
+            width: 89%;
             position: relative;
             left: -9px;
             top: 69px;
         }
         .auto-style20 {
-            width: 110px;
+            width: 91px;
         }
         .auto-style21 {
             color: #333333;
@@ -93,7 +90,7 @@
             color: #666666;
         }
         .auto-style23 {
-            width: 110px;
+            width: 91px;
             height: 24px;
         }
         .auto-style24 {
@@ -102,20 +99,35 @@
         .auto-style25 {
             margin-top: 0px;
         }
-        .auto-style26 {
-            font-size: xx-large;
-        }
         .auto-style27 {
             position: relative;
             left: 0px;
             top: 12px;
         }
         .auto-style28 {
-            width: 110px;
+            width: 91px;
             height: 20px;
         }
         .auto-style29 {
             height: 20px;
+        }
+        .auto-style30 {
+            width: 2381px;
+            color: #666666;
+            text-align: right;
+            font-size: xx-large;
+            height: 51px;
+        }
+        .auto-style31 {
+            width: 128px;
+            height: 51px;
+        }
+        .auto-style32 {
+            width: 5996px;
+            color: #666666;
+            text-align: right;
+            font-size: xx-large;
+            height: 51px;
         }
     </style>
 </head>
@@ -124,24 +136,31 @@
         <div class="auto-style1">
             <table class="auto-style16">
                 <tr>
+                    <td class="auto-style32">
+                        <strong>Welcome to Furniture Wonderland!&nbsp; </strong>
+                    </td>
+                    <td class="auto-style30">
+                    </td>
                     <td class="auto-style17">
-                        <span class="auto-style26"><strong>Welcome to Furniture Wonderland!</strong><br />
-                        </span>
-                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                        <asp:Label ID="LB_HelloUser" runat="server"></asp:Label>
                     </td>
-                    <td style="background-image: none; background-repeat: no-repeat; background-attachment: fixed; background-position: center center" class="auto-style18">
-                        <asp:ImageButton ID="profileIB" runat="server" OnClick="ImageButton1_Click" ImageUrl="~/profile.png" />
+                    <td style="background-image: none; background-repeat: no-repeat; background-attachment: fixed; background-position: center center" class="auto-style31">
+                        <asp:ImageButton ID="profileIB" runat="server" OnClick="ImageButton1_Click" ImageUrl="~/profile.png" PostBackUrl="~/LoginPage.aspx" />
                     </td>
-                    <td style="background-image: none; background-repeat: no-repeat; background-attachment: fixed; background-position: center center" class="auto-style18">
+                    <td style="background-image: none; background-repeat: no-repeat; background-attachment: fixed; background-position: center center" class="auto-style31">
                         <asp:ImageButton ID="shoppingCartIB" runat="server" ImageUrl="~/shopping.png" PostBackUrl="~/ShoppingCart.aspx" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style22" colspan="5">
+                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                     </td>
                 </tr>
             </table>
         </div>
         <table class="auto-style9">
             <tr style="position: relative">
-                <td class="auto-style15">&nbsp;</td>
-                <td class="auto-style13" style="table-layout: auto"><strong>
+                <td class="auto-style15"><strong>
                     <asp:LinkButton ID="chairLKB" runat="server" CssClass="auto-style11" OnClick="chairLKB_Click">椅子</asp:LinkButton>
                     </strong></td>
                 <td class="auto-style10"><strong>
@@ -291,7 +310,7 @@
             &nbsp;</p>
         <p class="auto-style27">
             <asp:Button ID="truncateTableBT" runat="server" OnClick="truncateTableBT_Click" Text="重建表單" />
-        <asp:SqlDataSource ID="showProduct" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT product_Id, product_name, product_price, product_qt, product_class FROM productTable"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="showProduct" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [product_Id], [product_name], [product_price], [product_qt], [product_class] FROM [productTable]"></asp:SqlDataSource>
         </p>
         <p>
             <asp:GridView ID="showProductGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="product_Id" DataSourceID="showProduct" Visible="False">
@@ -331,6 +350,22 @@
                 <asp:BoundField DataField="product_name" HeaderText="product_name" SortExpression="product_name" />
             </Columns>
         </asp:GridView>
+        <p>
+            &nbsp;</p>
+        <asp:SqlDataSource ID="HelloUserDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT user_id, user_name, user_phone, user_account, user_password FROM UserTable WHERE (user_id = @user_id)">
+            <SelectParameters>
+                <asp:SessionParameter Name="user_id" SessionField="id" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <asp:DetailsView ID="HelloUserDetailsView" runat="server" AutoGenerateRows="False" DataKeyNames="user_id" DataSourceID="HelloUserDataSource" Height="50px" Visible="False" Width="125px">
+            <Fields>
+                <asp:BoundField DataField="user_id" HeaderText="user_id" InsertVisible="False" ReadOnly="True" SortExpression="user_id" />
+                <asp:BoundField DataField="user_name" HeaderText="user_name" SortExpression="user_name" />
+                <asp:BoundField DataField="user_phone" HeaderText="user_phone" SortExpression="user_phone" />
+                <asp:BoundField DataField="user_account" HeaderText="user_account" SortExpression="user_account" />
+                <asp:BoundField DataField="user_password" HeaderText="user_password" SortExpression="user_password" />
+            </Fields>
+        </asp:DetailsView>
     </form>
 </body>
 </html>
