@@ -29,9 +29,11 @@
         }
         .sure{
             font-size:22px;
-            background-color: #d9a883;
+            background-color: #663300;
             padding:10px;
             margin-right:auto;
+            color: #fff;
+            width: 160px;
         }
 
         .image{
@@ -148,7 +150,7 @@
                 <tr>
                     <td>
                         <asp:Label ID="CartTotalPrice" runat="server" Text="Total : " CssClass="divide"></asp:Label>
-                        <hr style:"font-bold:500" />
+                        <hr style:"font-bold:500" id="horizontalDiv" />
                     </td>
                     
                 </tr>
@@ -158,19 +160,27 @@
                     </td>
                     
                 </tr>
+                <tr>
+                    <td>
+                        <asp:Button ID="BackToMain" runat="server" Text="Home" CssClass="sure" PostBackUrl="~/Default.aspx" />
+                    </td>
+                </tr>
             </table>
+            
+            
+            
             
             
             <asp:Label ID="qtLB" runat="server" CssClass="auto-style1" Text="庫存：" Visible="False"></asp:Label>
             
             
         </div>
-        <asp:SqlDataSource ID="CartDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT productTable.product_name, orderProductTable.num, orderProductTable.size, orderProductTable.color, productTable.product_price, productTable.product_img, orderProductTable.orderProduct_id FROM orderProductTable INNER JOIN productTable ON orderProductTable.product_id = productTable.product_Id WHERE (orderProductTable.customer_id = @customer_id) ORDER BY productTable.product_class" DeleteCommand="DELETE FROM orderProductTable WHERE (orderProduct_id = @orderProduct_id)" UpdateCommand="UPDATE orderProductTable SET num = @num, size = @size, color = @color WHERE (orderProduct_id = @orderProduct_id)">
+        <asp:SqlDataSource ID="CartDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT productTable.product_name, orderProductTable.num, orderProductTable.size, orderProductTable.color, productTable.product_price, productTable.product_img, orderProductTable.orderProduct_id FROM orderProductTable INNER JOIN productTable ON orderProductTable.product_id = productTable.product_Id WHERE (orderProductTable.customer_id = @customer_id) AND (orderProductTable.paid = 0) ORDER BY productTable.product_class" DeleteCommand="DELETE FROM orderProductTable WHERE (orderProduct_id = @orderProduct_id)" UpdateCommand="UPDATE orderProductTable SET num = @num, size = @size, color = @color WHERE (orderProduct_id = @orderProduct_id)">
             <DeleteParameters>
                 <asp:ControlParameter ControlID="CartView" Name="orderProduct_id" PropertyName="SelectedValue" />
             </DeleteParameters>
             <SelectParameters>
-                <asp:SessionParameter Name="customer_id" SessionField="customer_id" />
+                <asp:SessionParameter Name="customer_id" SessionField="id" />
             </SelectParameters>
             <UpdateParameters>
                 <asp:ControlParameter ControlID="CartView" Name="num" PropertyName="SelectedValue" />

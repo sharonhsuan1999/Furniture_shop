@@ -11,8 +11,38 @@ namespace web1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["customer_id"] =2;
+            //Session["customer_id"] =2;
             //countTotal();
+
+            bool back = false;
+
+
+            
+            if(CartView.Rows.Count==0)
+            {
+                if (Session["id"] == null)
+                    Response.Write("<script> alert('請先登入!') </script>");
+                else
+                    Response.Write("<script> alert('購物車是空的!') </script>");
+
+                CartTotalPrice.Visible = false;
+                PlaceOrder.Visible = false;
+                //horizontalDiv.Visible = false;
+                back = true;
+            }
+            else
+            {
+                CartTotalPrice.Visible =true;
+                PlaceOrder.Visible = true;
+               // horizontalDiv.Visible = true;
+            }
+
+            if(back)
+            {
+                back = false;
+                Server.Transfer("Default.aspx");
+
+            }
         }
         protected void CartView_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -41,10 +71,10 @@ namespace web1
 
             CartTotalPrice.Text = "Total: NT " + total;
             
-            if (0 == total)
-            {
-                PlaceOrder.Enabled = false;
-            }
+            //if (0 == total)
+            //{ 
+               // PlaceOrder.Enabled = false;
+            //}
         }
 
         private void numEditCheck(ref string msg, int i)
@@ -70,7 +100,12 @@ namespace web1
         {
             if (CartView.Rows.Count == 1)
             {
-                CartTotalPrice.Text = "購物車為空，歡迎前往選購！";
+                //CartTotalPrice.Text = "購物車為空，歡迎前往選購！";
+                Response.Write("<script> alert('購物車是空的，歡迎前往選購!') </script>");
+
+                CartTotalPrice.Visible = false;
+                PlaceOrder.Visible = false;
+                Server.Transfer("Default.aspx");
             }
         }
 

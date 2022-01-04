@@ -24,9 +24,9 @@ namespace web1
             }
         }
 
-        protected void ToIndexBt_Click(object sender, EventArgs e)
-        {
-            Server.Transfer("Default.aspx");
-        }
+        //protected void ToIndexBt_Click(object sender, EventArgs e)
+        //{
+            //Server.Transfer("Default.aspx");
+        //}
     }
 }

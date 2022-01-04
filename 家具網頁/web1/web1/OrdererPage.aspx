@@ -210,12 +210,17 @@
                 </tr>
             </table>
         </div>
-        <asp:SqlDataSource ID="InsertOrdererSql" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" InsertCommand="INSERT INTO orderTable(order_time, order_userPhone, order_address, order_creditCard) VALUES (GETDATE(), @order_userPhone, @order_address, @order_creditCard)">
+        <asp:SqlDataSource ID="InsertOrdererSql" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" InsertCommand="INSERT INTO orderTable(order_time, order_userPhone, order_address, order_creditCard, customer_id) VALUES (GETDATE(), @order_userPhone, @order_address, @order_creditCard, @customer_id)" UpdateCommand="UPDATE orderProductTable SET order_id = @order_id, paid = 1 WHERE (customer_id = @customer_id)">
             <InsertParameters>
                 <asp:ControlParameter ControlID="phoneTB" Name="order_userPhone" PropertyName="Text" />
                 <asp:SessionParameter Name="order_address" SessionField="Address" />
                 <asp:ControlParameter ControlID="paymentIDTB" Name="order_creditCard" PropertyName="Text" />
+                <asp:SessionParameter Name="customer_id" SessionField="id" />
             </InsertParameters>
+            <UpdateParameters>
+                <asp:SessionParameter Name="order_id" SessionField="order_id" />
+                <asp:SessionParameter Name="customer_id" SessionField="id" />
+            </UpdateParameters>
         </asp:SqlDataSource>
     </form>
 </body>

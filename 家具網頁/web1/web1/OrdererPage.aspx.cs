@@ -24,6 +24,17 @@ namespace web1
         {
             Session["Address"] = addressList.SelectedValue + addressTB.Text;
             InsertOrdererSql.Insert();
+
+            SqlConnection orderCon = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\clientData.mdf;Integrated Security=True");
+            orderCon.Open();
+            SqlCommand getOrderIdCmd = new SqlCommand("select top 1 order_id from[orderTable] where customer_id="+Session["id"]+" order by order_time Desc", orderCon);
+            SqlDataReader orderDr;
+            orderDr = getOrderIdCmd.ExecuteReader();
+            if (orderDr.Read())
+            {
+                Session["order_id"] = orderDr["order_id"];
+            }
+            InsertOrdererSql.Update();
             Server.Transfer("lastPage.aspx");
         }
 

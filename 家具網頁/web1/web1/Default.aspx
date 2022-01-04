@@ -309,7 +309,7 @@
         <p>
             &nbsp;</p>
         <p class="auto-style27">
-            <asp:Button ID="truncateTableBT" runat="server" OnClick="truncateTableBT_Click" Text="重建表單" />
+            <asp:Button ID="truncateTableBT" runat="server" OnClick="truncateTableBT_Click" Text="重建表單" Visible="False" />
         <asp:SqlDataSource ID="showProduct" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [product_Id], [product_name], [product_price], [product_qt], [product_class] FROM [productTable]"></asp:SqlDataSource>
         </p>
         <p>
@@ -337,10 +337,11 @@
                 </Columns>
             </asp:GridView>
         </p>
-        <asp:SqlDataSource ID="orderProductDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" InsertCommand="INSERT INTO orderProductTable(product_id, order_id) VALUES (@product_id, @order_id)" SelectCommand="SELECT orderProductTable.orderProduct_id, orderProductTable.product_id, productTable.product_name FROM orderProductTable INNER JOIN productTable ON orderProductTable.product_id = productTable.product_Id AND orderProductTable.product_id = productTable.product_Id">
+        <asp:SqlDataSource ID="orderProductDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" InsertCommand="INSERT INTO orderProductTable(product_id, order_id, customer_id) VALUES (@product_id, @order_id, @customer_id)" SelectCommand="SELECT orderProductTable.orderProduct_id, orderProductTable.product_id, productTable.product_name FROM orderProductTable INNER JOIN productTable ON orderProductTable.product_id = productTable.product_Id AND orderProductTable.product_id = productTable.product_Id">
             <InsertParameters>
                 <asp:SessionParameter Name="product_id" SessionField="product_id" />
                 <asp:SessionParameter Name="order_id" SessionField="order_id" />
+                <asp:SessionParameter Name="customer_id" SessionField="id" />
             </InsertParameters>
         </asp:SqlDataSource>
         <asp:GridView ID="orderProductGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="orderProduct_id" DataSourceID="orderProductDataSource" Visible="False">
