@@ -18,7 +18,8 @@ namespace WebProject
         {
             RegisterSqlData.Insert();
             Response.Write("<script> alert('註冊成功!請重新登入~') </script>");
-            Server.Transfer("~/LoginPage.aspx", false);
+            string strRedirect = "~/LoginPage.aspx";
+            Response.Redirect(strRedirect,true);
         }
     }
 }
