@@ -63,8 +63,6 @@ namespace web1
         {
             int num;
             int qt;
-            bool isError = false;
-            string qtnum=" ";
             for (int i = 0; i < QtGridView.Rows.Count; i++)
             {
                 if (QtGridView.Rows[i].Cells[0].FindControl("qtIdLB") != null &&
@@ -85,7 +83,6 @@ namespace web1
                         }
                         else {
                             PlaceOrder.Enabled = true;
-                            errorLB.Visible = false;
                         }
                     }
                 }
@@ -161,7 +158,7 @@ namespace web1
                 }
             }
         }
-
+        
         protected void PlaceOrder_Click(object sender, EventArgs e)
         {
             updateQt();

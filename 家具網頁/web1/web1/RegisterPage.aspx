@@ -180,7 +180,7 @@
                 <asp:ControlParameter ControlID="TB_PasswordInput" Name="user_password" PropertyName="Text" />
             </InsertParameters>
         </asp:SqlDataSource>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="user_id" DataSourceID="RegisterSqlData">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="user_id" DataSourceID="RegisterSqlData" Visible="False">
             <Columns>
                 <asp:BoundField DataField="user_id" HeaderText="user_id" InsertVisible="False" ReadOnly="True" SortExpression="user_id" />
                 <asp:BoundField DataField="user_name" HeaderText="user_name" SortExpression="user_name" />

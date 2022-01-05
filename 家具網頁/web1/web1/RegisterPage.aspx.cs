@@ -21,5 +21,7 @@ namespace WebProject
             string strRedirect = "~/LoginPage.aspx";
             Response.Redirect(strRedirect,true);
         }
+
+       
     }
 }

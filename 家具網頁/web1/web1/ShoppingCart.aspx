@@ -208,7 +208,7 @@
                 <asp:SessionParameter Name="product_Id" SessionField="updateQtId" />
             </UpdateParameters>
         </asp:SqlDataSource>
-        <asp:GridView ID="QtGridView" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataSourceID="QtDataSource" ForeColor="Black" GridLines="Vertical">
+        <asp:GridView ID="QtGridView" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataSourceID="QtDataSource" ForeColor="Black" GridLines="Vertical" Visible="False">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:TemplateField HeaderText="product_id" SortExpression="product_id">
