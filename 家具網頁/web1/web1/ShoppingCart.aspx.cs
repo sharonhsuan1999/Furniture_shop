@@ -51,11 +51,12 @@ namespace web1
 
         protected void CartView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            QtGridView.DataBind();
             errorLB.Text = "";
             errorLB.Visible = false;
             countTotal();
             qtCheck();
-            QtGridView.DataBind();
+            
         }
 
         private void qtCheck()
@@ -63,31 +64,31 @@ namespace web1
             int num;
             int qt;
             bool isError = false;
-
+            string qtnum=" ";
             for (int i = 0; i < QtGridView.Rows.Count; i++)
             {
-                if (QtGridView.Rows[i].Cells[1].FindControl("qtNameLB") != null &&
-                    QtGridView.Rows[i].Cells[2].FindControl("totalNumLB") != null &&
-                    QtGridView.Rows[i].Cells[3].FindControl("checkQtLB") != null)
+                if (QtGridView.Rows[i].Cells[0].FindControl("qtIdLB") != null &&
+                    QtGridView.Rows[i].Cells[1].FindControl("itemNumLB") != null &&
+                    QtGridView.Rows[i].Cells[2].FindControl("checkQtLB") != null)
                 {
-                    using (Label qtNameLB = (Label)QtGridView.Rows[i].Cells[1].FindControl("qtNameLB"),
-                        totalNumLB = (Label)QtGridView.Rows[i].Cells[2].FindControl("totalNumLB"),
-                        checkQtLB = (Label)QtGridView.Rows[i].Cells[3].FindControl("checkQtLB"))
+                    using (Label qtNameLB = (Label)QtGridView.Rows[i].Cells[0].FindControl("qtIdLB"),
+                        totalNumLB = (Label)QtGridView.Rows[i].Cells[1].FindControl("itemNumLB"),
+                        checkQtLB = (Label)QtGridView.Rows[i].Cells[2].FindControl("checkQtLB"))
                     {
                         num = Convert.ToInt32(totalNumLB.Text);
                         qt = Convert.ToInt32(checkQtLB.Text);
                         if (num > qt)
                         {
-                            errorLB.Text += "<br>" + qtNameLB.Text + "庫存不足(剩下" + qt + "個)";
-                            isError = true;
+                            errorLB.Text += "<br>" + "庫存不足(剩下" + qt + "個)";
+                            PlaceOrder.Enabled = false;
+                            errorLB.Visible = true;
+                        }
+                        else {
+                            PlaceOrder.Enabled = true;
+                            errorLB.Visible = false;
                         }
                     }
                 }
-            }
-            if (isError)
-            {
-                PlaceOrder.Enabled = false;
-                errorLB.Visible = true;
             }
         }
         private void countTotal()
@@ -143,7 +144,7 @@ namespace web1
                 Response.Write("<script> alert('購物車是空的，歡迎前往選購!') </script>");
 
                 CartTotalPrice.Visible = false;
-                PlaceOrder.Visible = false;
+                PlaceOrder.Enabled = true;
                 errorLB.Visible = false;
 
                 Server.Transfer("Default.aspx");
@@ -164,6 +165,7 @@ namespace web1
         protected void PlaceOrder_Click(object sender, EventArgs e)
         {
             updateQt();
+            Server.Transfer("OrdererPage.aspx");
         }
 
         private void updateQt()
@@ -173,12 +175,12 @@ namespace web1
             for (int i = 0; i < QtGridView.Rows.Count; i++)
             {
                 if (QtGridView.Rows[i].Cells[0].FindControl("qtIdLB") != null &&
-                    QtGridView.Rows[i].Cells[2].FindControl("totalNumLB") != null &&
-                    QtGridView.Rows[i].Cells[3].FindControl("checkQtLB") != null)
+                    QtGridView.Rows[i].Cells[1].FindControl("itemNumLB") != null &&
+                    QtGridView.Rows[i].Cells[2].FindControl("checkQtLB") != null)
                 {
                     using (Label qtIdLB = (Label)QtGridView.Rows[i].Cells[0].FindControl("qtIdLB"),
-                        totalNumLB = (Label)QtGridView.Rows[i].Cells[2].FindControl("totalNumLB"),
-                        checkQtLB = (Label)QtGridView.Rows[i].Cells[3].FindControl("checkQtLB"))
+                        totalNumLB = (Label)QtGridView.Rows[i].Cells[1].FindControl("itemNumLB"),
+                        checkQtLB = (Label)QtGridView.Rows[i].Cells[2].FindControl("checkQtLB"))
                     {
                         num = Convert.ToInt32(totalNumLB.Text);
                         qt = Convert.ToInt32(checkQtLB.Text);

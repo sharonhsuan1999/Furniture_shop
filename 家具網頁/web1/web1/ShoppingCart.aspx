@@ -157,7 +157,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="PlaceOrder" runat="server" Text="Place Order" CssClass="sure" PostBackUrl="~/OrdererPage.aspx" OnClick="PlaceOrder_Click" />
+                        <asp:Button ID="PlaceOrder" runat="server" Text="Place Order" CssClass="sure" OnClick="PlaceOrder_Click" />
                     </td>
                     
                 </tr>
@@ -199,16 +199,16 @@
                 <asp:ControlParameter ControlID="CartView" Name="orderProduct_id" PropertyName="SelectedDataKey" />
             </UpdateParameters>
         </asp:SqlDataSource>
-        <asp:SqlDataSource ID="QtDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT orderProductTable.product_id, SUM(orderProductTable.num) AS totalNum, productTable.product_qt, productTable.product_name FROM orderProductTable INNER JOIN productTable ON orderProductTable.product_id = productTable.product_Id WHERE (orderProductTable.order_id = @order_id) GROUP BY orderProductTable.product_id, productTable.product_qt, productTable.product_name" UpdateCommand="UPDATE productTable SET product_qt = @product_qt WHERE (product_Id = @product_Id)">
+        <asp:SqlDataSource ID="QtDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT orderProductTable.product_id, orderProductTable.num, productTable.product_qt, orderProductTable.customer_id, orderProductTable.paid FROM orderProductTable INNER JOIN productTable ON orderProductTable.product_id = productTable.product_Id WHERE (orderProductTable.customer_id = @customer_id) AND (orderProductTable.paid = 0)" UpdateCommand="UPDATE productTable SET product_qt = @product_qt WHERE (product_Id = @product_Id)">
             <SelectParameters>
-                <asp:SessionParameter Name="order_id" SessionField="order_id" />
+                <asp:SessionParameter Name="customer_id" SessionField="id" />
             </SelectParameters>
             <UpdateParameters>
                 <asp:SessionParameter Name="product_qt" SessionField="updateQtNum" />
                 <asp:SessionParameter Name="product_Id" SessionField="updateQtId" />
             </UpdateParameters>
         </asp:SqlDataSource>
-        <asp:GridView ID="QtGridView" runat="server" Visible="False" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataSourceID="QtDataSource" ForeColor="Black" GridLines="Vertical">
+        <asp:GridView ID="QtGridView" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataSourceID="QtDataSource" ForeColor="Black" GridLines="Vertical">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:TemplateField HeaderText="product_id" SortExpression="product_id">
@@ -219,20 +219,12 @@
                         <asp:Label ID="qtIdLB" runat="server" Text='<%# Bind("product_id") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="product_name" SortExpression="product_name">
+                <asp:TemplateField HeaderText="num" SortExpression="num">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("product_name") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("num") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="qtNameLB" runat="server" Text='<%# Bind("product_name") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="totalNum" SortExpression="totalNum">
-                    <EditItemTemplate>
-                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("totalNum") %>'></asp:Label>
-                    </EditItemTemplate>
-                    <ItemTemplate>
-                        <asp:Label ID="totalNumLB" runat="server" Text='<%# Bind("totalNum") %>'></asp:Label>
+                        <asp:Label ID="itemNumLB" runat="server" Text='<%# Bind("num") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="product_qt" SortExpression="product_qt">
@@ -241,6 +233,14 @@
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="checkQtLB" runat="server" Text='<%# Bind("product_qt") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="customer_id" SortExpression="customer_id">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("customer_id") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("customer_id") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
